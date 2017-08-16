@@ -24,11 +24,16 @@
 
 	"require": {
 		"psr/log": "^1.0",
-		"monolog/monolog": "^1.16"
+		"monolog/monolog": "^1.16",
+		"pimple/pimple": "^3.2"
 	},
 
 	"require-dev": {
 			"satooshi/php-coveralls": "^1.0",
 			"phpunit/phpunit": "^5.2"
-	}
+	},
+
+  "suggest": {
+      "pimple/pimple": "This package provides a ServiceProvider for the famous Pimple Dependency Injection Container."
+  }
 }
