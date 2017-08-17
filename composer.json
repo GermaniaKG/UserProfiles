@@ -24,13 +24,13 @@
 
 	"require": {
 		"psr/log": "^1.0",
-		"monolog/monolog": "^1.16",
-		"pimple/pimple": "^3.2"
+		"monolog/monolog": "^1.16"
 	},
 
 	"require-dev": {
 			"satooshi/php-coveralls": "^1.0",
-			"phpunit/phpunit": "^5.2"
+			"phpunit/phpunit": "^5.2",
+			"pimple/pimple": "^3.2"
 	},
 
   "suggest": {
