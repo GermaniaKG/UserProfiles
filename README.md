@@ -255,15 +255,27 @@ if ($result) {
 }
 ```
 
-## Development and Testing
+## Issues
 
-Develop using `develop` branch, using [Git Flow](https://github.com/nvie/gitflow).   
-Go to proejct root and issue `phpunit`.
+See [issues list.][i0]
+
+[i0]: https://github.com/GermaniaKG/UserProfiles/issues 
+
+
+
+## Development
 
 ```bash
 $ git clone git@github.com:GermaniaKG/UserProfiles.git user-profiles
 $ cd user-profiles
-$ cp phpunit.xml.dist phpunit.xml
-$ phpunit
+$ composer install
 ```
 
+## Unit tests
+
+Either copy `phpunit.xml.dist` to `phpunit.xml` and adapt to your needs, or leave as is. 
+Run [PhpUnit](https://phpunit.de/) like this:
+
+```bash
+$ vendor/bin/phpunit
+```
