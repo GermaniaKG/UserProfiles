@@ -6,7 +6,6 @@
 [![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/build-status/master)
 
 
-
 ## Installation
 
 ```bash
