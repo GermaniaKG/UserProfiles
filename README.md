@@ -1,6 +1,6 @@
-#Germania\UserProfiles
+# Germania KG · UserProfiles
 
-##Installation
+## Installation
 
 ```bash
 $ composer require germania-kg/user-profiles
@@ -10,7 +10,7 @@ $ composer require germania-kg/user-profiles
 
 
 
-##A. Register a new User
+## A. Register a new User
 
 Wraps all necessary tasks in a single Callable.  
 For a detailed list of all single tasks, see chapters below.
@@ -64,7 +64,7 @@ catch (RegisterUserException $e) {
 ```
 
 
-###1. Check if login name is available
+### 1. Check if login name is available
 
 Return TRUE if the given login name is available, FALSE otherwise.
 
@@ -89,7 +89,7 @@ catch (LoginNameNotAvailableException $e) {
 
 
 
-###2. Insert new User
+### 2. Insert new User
 
 Throws a **UserProfileException** if required user data fields are missing.
 
@@ -120,7 +120,7 @@ catch (InsertUserException $e) {
 
 
 
-###3. Set a Users' Password
+### 3. Set a Users' Password
 ```php
 <?php
 use Germania\UserProfiles\PdoPasswordSetter;
@@ -143,7 +143,7 @@ catch (SetPasswordException $e) {
 ```
 
 
-###4. Set a User's API Key
+### 4. Set a User's API Key
 ```php
 <?php
 use Germania\UserProfiles\PdoApiKeySetter;
@@ -170,7 +170,7 @@ catch (SetApiKeyException $e) {
 
 -------------------
 
-##B. Set users 'active' state
+## B. Set users 'active' state
 
 ```php
 <?php
@@ -198,7 +198,7 @@ catch (SetActiveStateException $e) {
 
 
 
-##C. Update user profile
+## C. Update user profile
 
 Throws a **UserProfileException** if required user data fields are missing.
 
@@ -232,7 +232,7 @@ catch (UpdateProfileException $e) {
 -------------------
 
 
-##D. Validate a user's credentials:
+## D. Validate a user's credentials:
 
 Check if login name and password match a stored user:
 
@@ -255,7 +255,7 @@ if ($result) {
 }
 ```
 
-##Development and Testing
+## Development and Testing
 
 Develop using `develop` branch, using [Git Flow](https://github.com/nvie/gitflow).   
 Go to proejct root and issue `phpunit`.
