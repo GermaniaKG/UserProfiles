@@ -1,5 +1,12 @@
 # Germania KG · UserProfiles
 
+[![Build Status](https://travis-ci.org/GermaniaKG/UserProfiles.svg?branch=master)](https://travis-ci.org/GermaniaKG/UserProfiles)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/build-status/master)
+
+
+
 ## Installation
 
 ```bash
