@@ -9,7 +9,7 @@
 ## Installation
 
 ```bash
-$ composer require germania-kg/user-profiles
+$ composer require germania-kg/user-profiles:^2.0
 ```
 
 **MySQL users** may install the table *users* using `users.sql.txt` in `sql/` directory.
