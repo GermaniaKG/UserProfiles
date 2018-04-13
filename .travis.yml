@@ -1,23 +1,36 @@
 # .travis.yml
 
-# Default as of Sep. 2017
-dist: trusty
-
 language: php
 php:
   - "5.6"
   # - "7.0"
   - "7.1"
-  - hhvm
+  - "7.2"
+  # - hhvm
+
+
+# -- Begin MySQL support --------------------------
+
+services:
+  - mysql
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+
+# -- End MySQL support ----------------------------
+
 
 env:
 
 before_script:
-  - cp phpunit.xml.dist phpunit.xml
+  - rm composer.lock
+  - composer self-update
   - composer install --no-interaction
+  - cp phpunit.xml.dist phpunit.xml
 
 script:
   - vendor/bin/phpunit
 
 after_script:
+
 

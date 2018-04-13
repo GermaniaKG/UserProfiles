@@ -3,7 +3,7 @@ namespace tests;
 
 use Prophecy\Argument;
 
-class PdoTestcase extends \PHPUnit_Framework_TestCase
+class PdoTestcase extends \PHPUnit\Framework\TestCase
 {
 
     protected function createPdoStatementMock( $result )
