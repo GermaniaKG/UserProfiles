@@ -15,12 +15,12 @@ class PimpleServiceProvider implements ServiceProviderInterface
     {
 
         $dic['Profiles.Config'] = function( $dic ) {
-            $fieldconfig = (object) [
+            $fieldconfig = [
                 'required' => [],
                 'optional' => []
             ];
 
-            return (object) [
+            return [
                 'reset'           => $fieldconfig,
                 'change_password' => $fieldconfig,
                 'change_profile'  => $fieldconfig,
@@ -36,14 +36,14 @@ class PimpleServiceProvider implements ServiceProviderInterface
          * @return StdClass
          */
         $dic['Profiles.Login'] = function( $dic ) {
-            return $dic['Profiles.Config']->login;
+            return $dic['Profiles.Config']['login'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.Login.required'] = function( $dic ) {
-            return (array) $dic['Profiles.Login']->required;
+            return $dic['Profiles.Login']['required'];
         };
 
 
@@ -52,20 +52,20 @@ class PimpleServiceProvider implements ServiceProviderInterface
          * @return StdClass
          */
         $dic['Profiles.ResetPassword'] = function( $dic ) {
-            return $dic['Profiles.Config']->reset_password;
+            return $dic['Profiles.Config']['reset_password'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.ResetPassword.required'] = function( $dic ) {
-            return (array) $dic['Profiles.ResetPassword']->required;
+            return $dic['Profiles.ResetPassword']['required'];
         };
         /**
          * @return array
          */
         $dic['Profiles.ResetPassword.optional'] = function( $dic ) {
-            return (array) $dic['Profiles.ResetPassword']->optional;
+            return $dic['Profiles.ResetPassword']['optional'];
         };
 
 
@@ -75,21 +75,21 @@ class PimpleServiceProvider implements ServiceProviderInterface
          * @return StdClass
          */
         $dic['Profiles.Register'] = function( $dic ) {
-            return $dic['Profiles.Config']->register;
+            return $dic['Profiles.Config']['register'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.Register.required'] = function( $dic ) {
-            return (array) $dic['Profiles.Register']->required;
+            return $dic['Profiles.Register']['required'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.Register.optional'] = function( $dic ) {
-            return (array) $dic['Profiles.Register']->optional;
+            return $dic['Profiles.Register']['optional'];
         };
 
 
@@ -98,21 +98,21 @@ class PimpleServiceProvider implements ServiceProviderInterface
          * @return StdClass
          */
         $dic['Profiles.Signup'] = function( $dic ) {
-            return $dic['Profiles.Config']->signup;
+            return $dic['Profiles.Config']['signup'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.Signup.required'] = function( $dic ) {
-            return (array) $dic['Profiles.Signup']->required;
+            return $dic['Profiles.Signup']['required'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.Signup.optional'] = function( $dic ) {
-            return (array) $dic['Profiles.Signup']->optional;
+            return $dic['Profiles.Signup']['optional'];
         };
 
 
@@ -122,20 +122,20 @@ class PimpleServiceProvider implements ServiceProviderInterface
          * @return StdClass
          */
         $dic['Profiles.ChangePassword'] = function( $dic ) {
-            return $dic['Profiles.Config']->change_password;
+            return $dic['Profiles.Config']['change_password'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.ChangePassword.required'] = function( $dic ) {
-            return (array) $dic['Profiles.ChangePassword']->required;
+            return $dic['Profiles.ChangePassword']['required'];
         };
         /**
          * @return array
          */
         $dic['Profiles.ChangePassword.optional'] = function( $dic ) {
-            return (array) $dic['Profiles.ChangePassword']->optional;
+            return $dic['Profiles.ChangePassword']['optional'];
         };
 
 
@@ -146,21 +146,21 @@ class PimpleServiceProvider implements ServiceProviderInterface
          * @return StdClass
          */
         $dic['Profiles.EditProfile'] = function( $dic ) {
-            return $dic['Profiles.Config']->edit_profile;
+            return $dic['Profiles.Config']['edit_profile'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.EditProfile.required'] = function( $dic ) {
-            return (array) $dic['Profiles.EditProfile']->required;
+            return $dic['Profiles.EditProfile']['required'];
         };
 
         /**
          * @return array
          */
         $dic['Profiles.EditProfile.optional'] = function( $dic ) {
-            return (array) $dic['Profiles.EditProfile']->optional;
+            return $dic['Profiles.EditProfile']['optional'];
         };
 
     }
