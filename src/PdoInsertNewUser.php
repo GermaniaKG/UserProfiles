@@ -137,7 +137,7 @@ class PdoInsertNewUser
         endforeach;
 
         // Create UUID
-        $uuid = Uuid::uuid4()->toString();
+        $uuid = Uuid::uuid4()->__toString();
 
         // Perform
         $result = $this->stmt->execute([
