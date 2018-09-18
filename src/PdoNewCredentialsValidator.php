@@ -3,6 +3,8 @@ namespace Germania\UserProfiles;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidFactory;
 
 /**
  * This Callable checks if given username and password match a stored login name and password combination,
@@ -48,6 +50,11 @@ class PdoNewCredentialsValidator
      */
     public $logger;
 
+    /**
+     * @var UuidFactory
+     */
+    public $uuid_factory;
+
 
     /**
      * @param PDO             $pdo                PDO instance
@@ -60,12 +67,13 @@ class PdoNewCredentialsValidator
         $this->password_verifier = $password_verifier;
         $this->logger            = $logger ?: new NullLogger;
         $this->table             = $table  ?: $this->table;
+        $this->uuid_factory      = new UuidFactory;
 
 
         // Prepare business
         $sql = "SELECT
         id,
-        uuid,
+        HEX(uuid) as uuid,
         api_key,
         password
         FROM {$this->table}
@@ -115,9 +123,12 @@ class PdoNewCredentialsValidator
         endif;
 
         // Return found user data
+        $uuid_factory = $this->uuid_factory;
+        $uuid = $uuid_factory->fromString( $found_user['uuid'] );
+
         return [
             'id'      => $found_user['id'],
-            'uuid'    => $found_user['uuid'],
+            'uuid'    => $uuid,
             'api_key' => $found_user['api_key']
         ];
 
