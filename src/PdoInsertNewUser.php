@@ -6,6 +6,8 @@ use Germania\UserProfiles\Exceptions\InsertUserException;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
+use Ramsey\Uuid\Uuid;
+
 /**
  * This Callable insert a new User and returns his new ID.
  *
@@ -68,7 +70,10 @@ class PdoInsertNewUser
         $this->table  = $table  ?: $this->table;
 
         // Prepare business
+        // For UUID creation, see
+        // https://mysqlserverteam.com/storing-uuid-values-in-mysql-tables/
         $sql = "INSERT INTO {$this->table} (
+        uuid,
         user_login_name,
         user_display_name,
         user_email,
@@ -76,6 +81,7 @@ class PdoInsertNewUser
         user_first_name,
         created
         ) VALUES (
+        UNHEX( REPLACE( :uuid,'-','' )),
         :user_login_name,
         :user_display_name,
         :user_email,
@@ -130,9 +136,12 @@ class PdoInsertNewUser
             endif;
         endforeach;
 
+        // Create UUID
+        $uuid = Uuid::uuid4()->toString();
 
         // Perform
         $result = $this->stmt->execute([
+            'uuid'              => $uuid,
             'user_login_name'   => $user_data[ "login" ],
             'user_display_name' => $user_data[ "display_name" ],
             'user_email'        => $user_data[ "email" ],
@@ -145,6 +154,7 @@ class PdoInsertNewUser
         // Evaluate
         $loginfo = [
             'new_user_id'       => $result,
+            'uuid'              => $uuid,
             'user_display_name' => $user_data[ "display_name" ]
         ];
         if ($result):

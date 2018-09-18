@@ -24,7 +24,8 @@
 
 	"require": {
 		"psr/log": "^1.0",
-		"monolog/monolog": "^1.16"
+		"monolog/monolog": "^1.16",
+		"ramsey/uuid": "^3.7|^3.8"
 	},
 
 	"require-dev": {
