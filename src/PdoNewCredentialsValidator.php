@@ -73,7 +73,7 @@ class PdoNewCredentialsValidator
         // Prepare business
         $sql = "SELECT
         id,
-        HEX(uuid) as uuid,
+        LOWER(HEX(uuid)) as uuid,
         api_key,
         password
         FROM {$this->table}
