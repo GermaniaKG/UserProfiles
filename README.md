@@ -1,6 +1,6 @@
 # Germania KG · UserProfiles
 
-
+[![Packagist](https://img.shields.io/packagist/v/germania-kg/user-profiles.svg?style=flat)](https://packagist.org/packages/germania-kg/user-profiles)
 [![PHP version](https://img.shields.io/packagist/php-v/germania-kg/user-profiles.svg)](https://packagist.org/packages/germania-kg/user-profiles)
 [![Build Status](https://img.shields.io/travis/GermaniaKG/UserProfiles.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/UserProfiles)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/UserProfiles/?branch=master)
@@ -176,7 +176,6 @@ catch (SetApiKeyException $e) {
 
 
 
-
 -------------------
 
 ## B. Set users 'active' state
@@ -237,7 +236,6 @@ catch (UpdateProfileException $e) {
 }
 ```
 
-
 -------------------
 
 
@@ -268,7 +266,7 @@ if ($result) {
 
 See [issues list.][i0]
 
-[i0]: https://github.com/GermaniaKG/UserProfiles/issues 
+[i0]: https://github.com/GermaniaKG/UserProfiles/issues
 
 ## Development
 
