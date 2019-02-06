@@ -1,4 +1,5 @@
 # .scrutinizer.yml
+
 build:
 
     dependencies:
@@ -21,7 +22,7 @@ build:
         # Common versions: 5.4, 5.5, 5.6, 7.1 or hhvm
         php70:
             environment:
-                php: 7.0.20
+                php: 7.0
             tests:
                 override:
                     -
@@ -45,6 +46,20 @@ build:
         php72:
             environment:
                 php: 7.2
+
+            tests:
+                override:
+                    -
+                        command: 'vendor/bin/phpunit --coverage-clover=coverage'
+                        coverage:
+                            file: 'coverage'
+                            format: 'php-clover'
+
+
+        php73:
+            environment:
+                php:
+                    version: 7.3 # Common versions: 5.4, 5.5, 5.6, 7.1 or hhvm
 
             tests:
                 override:
