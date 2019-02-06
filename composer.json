@@ -1,40 +1,50 @@
 {
-	"name":        "germania-kg/user-profiles",
+    "name":        "germania-kg/user-profiles",
 
-	"type":        "library",
-	"license":     "MIT",
+    "type":        "library",
+    "license":     "MIT",
 
-	"authors": [
-		{
-			"name":  "Carsten Witt",
-			"email": "carstenwitt@germania-kg.de",
-			"role":  "Developer"
-		}
-	],
+    "authors": [
+        {
+            "name":  "Carsten Witt",
+            "email": "carstenwitt@germania-kg.de",
+            "role":  "Developer"
+        }
+    ],
 
-  "autoload": {
-      "psr-4": {
-          "Germania\\UserProfiles\\": "src/"
-      }
-  },
+    "autoload": {
+        "psr-4": {
+            "Germania\\UserProfiles\\": "src/"
+        }
+    },
 
-  "autoload-dev": {
-      "psr-4": { "tests\\": "tests/src" }
-  },
 
-	"require": {
-		"psr/log": "^1.0",
-		"monolog/monolog": "^1.16",
-		"ramsey/uuid": "^3.7|^3.8"
-	},
+    "autoload-dev": {
+        "psr-4": { "tests\\": "tests/src" }
+    },
 
-	"require-dev": {
-			"php-coveralls/php-coveralls": "^2.0",
-			"phpunit/phpunit": "^5.7|^6.0",
-			"pimple/pimple": "^3.2"
-	},
+    "require": {
+        "php": "^5.6|^7.0",
+        "psr/log": "^1.0",
+        "monolog/monolog": "^1.16",
+        "ramsey/uuid": "^3.7|^3.8"
+    },
 
-  "suggest": {
+    "require-dev": {
+            "php-coveralls/php-coveralls": "^2.0",
+            "phpunit/phpunit": "^5.7|^6.0|^7.0",
+            "pimple/pimple": "^3.2"
+    },
+
+    "suggest": {
       "pimple/pimple": "This package provides a ServiceProvider for the famous Pimple Dependency Injection Container."
-  }
+    },
+
+    "scripts": {
+        "phpunit": "phpunit",
+
+        "test": [
+            "@phpunit"
+        ]
+    }
 }
