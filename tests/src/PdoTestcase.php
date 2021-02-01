@@ -2,9 +2,11 @@
 namespace tests;
 
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class PdoTestcase extends \PHPUnit\Framework\TestCase
 {
+    use ProphecyTrait;
 
     protected function createPdoStatementMock( $result )
     {

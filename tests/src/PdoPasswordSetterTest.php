@@ -13,7 +13,7 @@ class PdoPasswordSetterTest extends PdoTestcase
 
     public $logger;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->logger = new NullLogger;
     }

@@ -14,7 +14,7 @@ class PdoApiKeySetterTest extends PdoTestcase
     public $logger;
     public $randomgen;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->logger = new NullLogger;
         $this->randomgen = function() { return "ABCDEF"; };

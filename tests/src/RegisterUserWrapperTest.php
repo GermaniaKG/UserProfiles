@@ -7,15 +7,17 @@ use Germania\UserProfiles\Exceptions\UserProfileExceptionInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class RegisterUserWrapperTest extends PdoTestcase
 {
+    use ProphecyTrait;
 
     public $logger;
     public $randomgen;
     public $hasher;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->logger = new NullLogger;
         $this->randomgen = function() { return "ABCDEF"; };
