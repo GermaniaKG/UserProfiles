@@ -17,29 +17,23 @@ class PimpleServiceProviderTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf(ServiceProviderInterface::class, $sut);
 
-        $this->assertInternalType('array', $dic['Profiles.Config']);
-
-        $this->assertInternalType('array', $dic['Profiles.Login']);
-        $this->assertInternalType('array', $dic['Profiles.Login.required']);
-
-        $this->assertInternalType('array', $dic['Profiles.ResetPassword']);
-        $this->assertInternalType('array', $dic['Profiles.ResetPassword.required']);
-        $this->assertInternalType('array', $dic['Profiles.ResetPassword.optional']);
-
-        $this->assertInternalType('array', $dic['Profiles.Register']);
-        $this->assertInternalType('array', $dic['Profiles.Register.required']);
-        $this->assertInternalType('array', $dic['Profiles.Register.optional']);
-
-        $this->assertInternalType('array', $dic['Profiles.Signup']);
-        $this->assertInternalType('array', $dic['Profiles.Signup.required']);
-        $this->assertInternalType('array', $dic['Profiles.Signup.optional']);
-
-        $this->assertInternalType('array', $dic['Profiles.ChangePassword']);
-        $this->assertInternalType('array', $dic['Profiles.ChangePassword.required']);
-        $this->assertInternalType('array', $dic['Profiles.ChangePassword.optional']);
-
-        $this->assertInternalType('array', $dic['Profiles.EditProfile']);
-        $this->assertInternalType('array', $dic['Profiles.EditProfile.required']);
-        $this->assertInternalType('array', $dic['Profiles.EditProfile.optional']);
+        $this->assertIsArray($dic['Profiles.Config']);
+        $this->assertIsArray($dic['Profiles.Login']);
+        $this->assertIsArray($dic['Profiles.Login.required']);
+        $this->assertIsArray($dic['Profiles.ResetPassword']);
+        $this->assertIsArray($dic['Profiles.ResetPassword.required']);
+        $this->assertIsArray($dic['Profiles.ResetPassword.optional']);
+        $this->assertIsArray($dic['Profiles.Register']);
+        $this->assertIsArray($dic['Profiles.Register.required']);
+        $this->assertIsArray($dic['Profiles.Register.optional']);
+        $this->assertIsArray($dic['Profiles.Signup']);
+        $this->assertIsArray($dic['Profiles.Signup.required']);
+        $this->assertIsArray($dic['Profiles.Signup.optional']);
+        $this->assertIsArray($dic['Profiles.ChangePassword']);
+        $this->assertIsArray($dic['Profiles.ChangePassword.required']);
+        $this->assertIsArray($dic['Profiles.ChangePassword.optional']);
+        $this->assertIsArray($dic['Profiles.EditProfile']);
+        $this->assertIsArray($dic['Profiles.EditProfile.required']);
+        $this->assertIsArray($dic['Profiles.EditProfile.optional']);
     }
 }
