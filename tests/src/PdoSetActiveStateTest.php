@@ -72,16 +72,16 @@ class PdoSetActiveStateTest extends PdoTestcase
     public function provideData()
     {
         return array(
-            [ 1, 1],
-            [ 1, -1],
+            "Active state with 1 (true)" => [ 1, 1],
+            "Active state with -1 (false)" => [ 1, -1],
         );
     }
 
     public function provideInvalidData()
     {
         return array(
-            [ 1, "notaninteger"],
-            [ 1, 0.003]
+            "Active state as string" => [ 1, "notaninteger"],
+            "Active state as float value" => [ 1, 0.003]
         );
     }
 

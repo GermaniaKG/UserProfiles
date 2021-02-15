@@ -80,7 +80,7 @@ class PdoProfileUpdaterTest extends PdoTestcase
         ];
 
         return array(
-            [ 52, $user_data]
+            "User ID and data array" => [ 52, $user_data]
         );
     }
 
@@ -95,7 +95,7 @@ class PdoProfileUpdaterTest extends PdoTestcase
         ];
 
         return array(
-            [ 52,  $user_data_missing_fields]
+            "User ID and missing fields" => [ 52,  $user_data_missing_fields]
         );
     }
 

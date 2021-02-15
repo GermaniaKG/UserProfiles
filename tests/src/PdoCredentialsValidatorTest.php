@@ -53,10 +53,10 @@ class PdoCredentialsValidatorTest extends PdoTestcase
             'password' => "hashedstuff"
         ];
         return array(
-            // $login,  $pass,   $fetch_result, $verifier_result, $expected_result
-            [ "foo",    "bar",   $user,         true,             $user->id  ],
-            [ "foo",    "bar",   $user,         false,            false ],
-            [ "foo",    "bar",   null,          false,            false ]
+            //                        $login,  $pass,   $fetch_result, $verifier_result, $expected_result
+            "All OK data"       => [ "foo",    "bar",   $user,         true,             $user->id  ],
+            "Verification fail" => [ "foo",    "bar",   $user,         false,            false ],
+            "User unknown"      => [ "foo",    "bar",   null,          false,            false ]
         );
     }
 

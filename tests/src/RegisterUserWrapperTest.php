@@ -74,7 +74,7 @@ class RegisterUserWrapperTest extends PdoTestcase
         ];
 
         return array(
-            [ 52, $user_data]
+            "Complete User data" => [ 52, $user_data]
         );
     }
 
@@ -90,7 +90,7 @@ class RegisterUserWrapperTest extends PdoTestcase
         ];
 
         return array(
-            [ 52,  $user_data_missing_fields]
+            "Incomplete User data" =>[ 52,  $user_data_missing_fields]
         );
     }
 

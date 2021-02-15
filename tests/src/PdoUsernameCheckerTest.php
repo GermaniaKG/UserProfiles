@@ -46,7 +46,7 @@ class PdoUsernameCheckerTest extends PdoTestcase
     /**
      * @dataProvider provideData
      */
-    public function testErrorUsage( $user_id )
+    public function testLoginNameNotAvailable( $user_id )
     {
         $stmt = $this->prophesize(\PDOStatement::class);
         $stmt->execute( Argument::type('array') )->willReturn( true );
@@ -66,7 +66,7 @@ class PdoUsernameCheckerTest extends PdoTestcase
     public function provideData()
     {
         return array(
-            [ 1 ]
+            "Some User ID" => [ 1 ]
         );
     }
 
