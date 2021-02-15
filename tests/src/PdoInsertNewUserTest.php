@@ -89,7 +89,7 @@ class PdoInsertNewUserTest extends PdoTestcase
         ];
 
         return array(
-            [ 52, $user_data]
+            "User ID and complete data array" => [ 52, $user_data]
         );
     }
 
@@ -104,7 +104,7 @@ class PdoInsertNewUserTest extends PdoTestcase
         ];
 
         return array(
-            [ 52,  $user_data_missing_fields]
+            "User ID and incomplete data array" => [ 52,  $user_data_missing_fields]
         );
     }
 

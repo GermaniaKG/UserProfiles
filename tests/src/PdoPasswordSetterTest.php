@@ -41,7 +41,7 @@ class PdoPasswordSetterTest extends PdoTestcase
     /**
      * @dataProvider provideData
      */
-    public function testErrorUsage( $user_id, $password )
+    public function testPasswordException( $user_id, $password )
     {
         $stmt_mock = $this->createPdoStatementMock( false );
         $pdo_mock = $this->createPdoMock( $stmt_mock );
@@ -61,7 +61,7 @@ class PdoPasswordSetterTest extends PdoTestcase
     public function provideData()
     {
         return array(
-            [ 1,"foo"]
+            "User ID and Password" => [ 1,"foo"]
         );
     }
 
