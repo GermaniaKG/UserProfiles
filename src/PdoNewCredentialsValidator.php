@@ -18,9 +18,9 @@ use Ramsey\Uuid\UuidFactory;
  *     $pdo      = new PDO( ... );
  *     $verifier = function() { return false; };
  *     $logger   = new Monolog();
- *     $table    = 'users';
+ *     $users_table    = 'users';
  *
- *     $checker = new PdoNewCredentialsValidator( $pdo, $verifier, $logger, $table);
+ *     $checker = new PdoNewCredentialsValidator( $pdo, $verifier, $logger, $users_table);
  *     $data = $checker( 'joehndoe@test.com', 'take_this_secret' );
  *
  *
@@ -30,10 +30,22 @@ class PdoNewCredentialsValidator
 {
 
     /**
-     * Database table
+     * Database users_table
      * @var string
      */
-    public $table = 'users';
+    public $users_table = 'users';
+
+    /**
+     * Database users_roles_table
+     * @var string|null
+     */
+    public $users_roles_table;
+
+    /**
+     * Database roles_table
+     * @var string|null
+     */
+    public $roles_table;
 
     /**
      * @var PDOStatement
@@ -57,28 +69,61 @@ class PdoNewCredentialsValidator
 
 
     /**
-     * @param PDO             $pdo                PDO instance
-     * @param Callable        $password_verifier  Callable password verifier that accepts password and password hash
-     * @param LoggerInterface $logger             Optional: PSR-3 Logger
-     * @param string          $table              Optional: Database table name
+     * @param PDO             $pdo                    PDO instance
+     * @param Callable        $password_verifier      Callable password verifier that accepts password and password hash
+     * @param LoggerInterface $logger                 Optional: PSR-3 Logger
+     * @param string          $users_table            Optional: Database users_table name, default: `users`
+     * @param string          $users_roles_table      Optional: Name of users/roles relations table.
+     * @param string          $roles_table            Optional: Name of roles table
      */
-    public function __construct( \PDO $pdo, Callable $password_verifier, LoggerInterface $logger = null, $table = null)
+    public function __construct( \PDO $pdo, Callable $password_verifier, LoggerInterface $logger = null, string $users_table = null, string $users_roles_table = null, string $roles_table = null)
     {
         $this->password_verifier = $password_verifier;
         $this->logger            = $logger ?: new NullLogger;
-        $this->table             = $table  ?: $this->table;
+        $this->users_table       = $users_table  ?: $this->users_table;
+        $this->users_roles_table = $users_roles_table;
+        $this->roles_table       = $roles_table;
         $this->uuid_factory      = new UuidFactory;
 
 
         // Prepare business
-        $sql = "SELECT
-        id,
-        LOWER(HEX(uuid)) as uuid,
-        api_key,
-        password
-        FROM {$this->table}
-        WHERE user_login_name = :login_name
-        LIMIT 1";
+
+        // Just the user data
+        if (empty($this->users_roles_table) or empty($this->roles_table)) {
+            $sql = "SELECT
+            id,
+            LOWER(HEX(uuid)) as uuid,
+            api_key,
+            password
+            FROM {$this->users_table}
+            WHERE user_login_name = :login_name
+            LIMIT 1";
+        }
+
+        // Or, additionally, with roles.
+        else if (!empty($this->users_roles_table) and !empty($this->roles_table)) {
+
+            $sql = "SELECT
+            U.id,
+            LOWER(HEX(U.uuid)) as uuid,
+            U.api_key,
+            U.password,
+
+            GROUP_CONCAT(DISTINCT R.usergroup_short_name SEPARATOR ',') AS roles
+            FROM {$this->users_table} U
+
+            -- Zuordnung der Rollen (many-to-many)
+            LEFT JOIN {$this->users_roles_table} UR
+            ON U.id = UR.client_id
+            LEFT JOIN {$this->roles_table} R
+            ON R.id = UR.role_id
+
+            WHERE U.user_login_name = :login_name
+            LIMIT 1";
+        }
+        else {
+            throw new \UnexpectedValueException("Expected roles table AND users-roles table as well.");
+        }
 
         // Store for later use
         $this->stmt = $pdo->prepare( $sql );
