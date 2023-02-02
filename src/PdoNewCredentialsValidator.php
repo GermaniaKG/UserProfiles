@@ -171,11 +171,17 @@ class PdoNewCredentialsValidator
         $uuid_factory = $this->uuid_factory;
         $uuid = $uuid_factory->fromString( $found_user['uuid'] );
 
-        return [
+        $result = [
             'id'      => $found_user['id'],
             'uuid'    => $uuid,
             'api_key' => $found_user['api_key']
         ];
+
+        if (!empty($found_user['roles'])) {
+            $result['roles'] = explode(",", $found_user['roles']);
+        }
+
+        return $result;
 
     }
 
