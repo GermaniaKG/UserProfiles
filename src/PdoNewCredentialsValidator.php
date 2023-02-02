@@ -22,7 +22,7 @@ use Ramsey\Uuid\UuidFactory;
  *
  *     $checker = new PdoNewCredentialsValidator( $pdo, $verifier, $logger, $table);
  *     $data = $checker( 'joehndoe@test.com', 'take_this_secret' );
- *     ?>
+ *
  *
  * @author  Carsten Witt <carstenwitt@germania-kg.de>
  */
